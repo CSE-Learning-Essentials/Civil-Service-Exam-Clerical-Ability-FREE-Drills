@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Civil Service Exam Practice Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f7f7f7;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .answers {
+      margin-left: 20px;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background: #0056b3;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .correction {
+      margin-top: 10px;
+      background: #e0f7fa;
+      padding: 10px;
+      border-left: 4px solid #00acc1;
+      font-size: 14px;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #222;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+    }
+    footer h4 {
+      margin-bottom: 10px;
+    }
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Civil Service Exam Practice Test</h1>
+<h2>Created by: CSE Learning Essentials</h2>
+<h3>Section 2: Clerical Ability<br>Part 2: Filing<br>10-Item Test<br>Passing Score: 8</h3>
+<p><strong>Direction:</strong> Arrange the following names in alphabetical order for proper filing.</p>
+
+<form id="quizForm"></form>
+
+<button class="submit-btn" onclick="event.preventDefault(); checkAnswers();">Submit Answers</button>
+
+<div class="result" id="result"></div>
+
+<footer>
+  <h4>ADVERTISEMENT</h4>
+  <p>🎓 Level up your review! Visit <a href="https://facebook.com/cselearningessentials" target="_blank">CSE Learning Essentials</a> for free resources, tips, and more mock exams.</p>
+  <h4>FOLLOW US</h4>
+  <p>
+    📘 <a href="https://facebook.com/cselearningessentials" target="_blank">Facebook</a> |
+    ▶️ <a href="https://www.youtube.com/@cselearningessentialsph2023" target="_blank">YouTube</a> |
+  </p>
+</footer>
+
+<div class="advertisement">
+  <img src="images/advertisement.png" alt="Civil Service E-book" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 15px auto; border-radius: 5px;">
+  <p>Avail our latest Civil Service Exam Reviewer E-books (E-book 1: Professional Level and E-book 2: Sub-professional Level. Direct message us for more details!</p>
+</div>
+
+<script>
+  const data = [
+    {
+      q: "1) a. Sir Mark C. David<br>b. Dr. Elen P. Rodriguez<br>c. Gen. Max A. Aquino<br>d. Atty. Juan D. Castro",
+      options: ["A) c-d-a-b","B) c-d-b-a","C) d-a-b-c","D) b-d-a-c","E) d-b-c-a"],
+      answer: "A",
+      explain: "Aquino, Castro, David, Rodriguez → c-d-a-b"
+    },
+    {
+      q: "2) a. Sir Mark David<br>b. Dr. Elen Rodriguez<br>c. Gen. Max Aquino<br>d. Atty. Juan Castro",
+      options: ["A) c-d-a-b","B) c-d-b-a","C) d-a-b-c","D) b-d-a-c","E) d-b-c-a"],
+      answer: "E",
+      explain: "Attorney, Doctor, General, Sir → d-b-c-a"
+    },
+    {
+      q: "3) a. Sir Mark<br>b. Dr. Elen<br>c. Gen. Max<br>d. Atty. Juan",
+      options: ["A) c-d-a-b","B) c-d-b-a","C) d-a-b-c","D) b-d-a-c","E) d-b-c-a"],
+      answer: "E",
+      explain: "Attorney, Doctor, General, Sir → d-b-c-a"
+    },
+    {
+      q: "4) a. Sir Mark David, Sr.<br>b. Dr. Elen Rodriguez, M.D.<br>c. Gen. Max Aquino, Jr.<br>d. Atty. Juan Castro, CESO I",
+      options: ["A) c-d-a-b","B) c-d-b-a","C) d-a-b-c","D) b-d-a-c","E) d-b-c-a"],
+      answer: "A",
+      explain: "Aquino, Castro, David, Rodriguez → c-d-a-b"
+    },
+    {
+      q: "5) a. Dr. Andres Belen<br>b. Atty. Jose Segovia<br>c. Solicitor Gen. Mclong<br>d. Sir William",
+      options: ["A) a-b-d-c","B) d-a-b-c","C) b-a-d-c","D) a-c-b-d","E) a-c-d-b"],
+      answer: "C",
+      explain: "Attorney, Doctor, Sir, Solicitor → b-a-d-c"
+    },
+    {
+      q: "6) a. Dr. Andres Q. Belen<br>b. Atty. Jose A. Segovia<br>c. Solicitor Gen. Mike C. Mclong<br>d. Sir George A. William",
+      options: ["A) a-b-d-c","B) d-a-b-c","C) b-a-d-c","D) a-c-b-d","E) a-c-d-b"],
+      answer: "D",
+      explain: "Belen, Mclong, Segovia, William → a-c-b-d"
+    },
+    {
+      q: "7) a. Sec. Ronaldo Zamora<br>b. Sec. Jose Pardo<br>c. Sec. Orlando Mercado<br>d. Sec. Serafin Cuevas<br>e. Sec. Estanislao Espiritu",
+      options: ["A) d-a-b-e-c","B) c-e-b-a-d","C) e-b-c-a-d","D) b-c-d-a-e","E) a-d-c-b-e"],
+      answer: "C",
+      explain: "Estanislao, Jose, Orlando, Ronaldo, Serafin → e-b-c-a-d"
+    },
+    {
+      q: "8) a. Sec. Dinky Soliman<br>b. Sec. Richard Gordon<br>c. Sec. Voltaire Gazmin<br>d. Sec. Armin Luistro",
+      options: ["A) D-A-B-C","B) D-A-C-B","C) C-B-D-A","D) C-B-A-D","E) D-C-B-A"],
+      answer: "A",
+      explain: "Armin, Dinky, Richard, Voltaire → D-A-B-C"
+    },
+    {
+      q: "9) a. Sec. Dinky B. Soliman<br>b. Sec. Richard L. Gordon<br>c. Sec. Voltaire Z. Gazmin<br>d. Sec. Armin T. Luistro",
+      options: ["A) D-A-B-C","B) D-A-C-B","C) C-B-D-A","D) C-B-A-D","E) D-C-B-A"],
+      answer: "C",
+      explain: "Gazmin, Gordon, Soliman, Luistro → C-B-D-A"
+    },
+    {
+      q: "10) a. Brigadier-Gen. Jose Lagaso<br>b. Captain Teody Ramos<br>c. Lieutenant J. Espaldon<br>d. General Velasco<br>e. Sergeant Macapuno",
+      options: ["A) A-B-D-C-E","B) B-A-E-C-D","C) A-B-C-D-E","D) C-E-A-D-B","E) C-A-E-B-D"],
+      answer: "A",
+      explain: "Brigadier-General, Captain, General, Lieutenant, Sergeant → A-B-D-C-E"
+    }
+  ];
+
+  const form = document.getElementById('quizForm');
+
+  data.forEach((item, i) => {
+    const questionDiv = document.createElement('div');
+    questionDiv.classList.add('question');
+    questionDiv.innerHTML = `<p>${item.q}</p><div class="answers">${
+      item.options.map((opt, j) => `
+        <label>
+          <input type="radio" name="q${i+1}" value="${String.fromCharCode(65 + j)}"> ${opt}
+        </label><br>`).join('')
+    }</div><div class="correction" id="correction${i+1}" style="display:none;"></div>`;
+    form.appendChild(questionDiv);
+  });
+
+  function checkAnswers() {
+    let score = 0;
+    data.forEach((item, i) => {
+      const selected = document.querySelector(`input[name="q${i+1}"]:checked`);
+      const correct = item.answer;
+      const correctionDiv = document.getElementById(`correction${i+1}`);
+
+      if (selected && selected.value === correct) {
+        score++;
+        correctionDiv.innerHTML = `✅ Correct! ${item.explain}`;
+      } else {
+        correctionDiv.innerHTML = `❌ Incorrect. Correct answer is <strong>${correct}</strong>. ${item.explain}`;
+      }
+      correctionDiv.style.display = 'block';
+    });
+
+    const result = document.getElementById('result');
+    result.textContent = `You got ${score}/10 correct. ${score >= 8 ? "✅ PASSING" : "❌ FAILED"}`;
+  }
+</script>
+
+</body>
+</html>
