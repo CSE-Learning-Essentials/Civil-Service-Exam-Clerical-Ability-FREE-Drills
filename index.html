@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Civil Service Exam Practice Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f7f7f7;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .answers {
+      margin-left: 20px;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background: #0056b3;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .correction {
+      margin-top: 10px;
+      background: #e0f7fa;
+      padding: 10px;
+      border-left: 4px solid #00acc1;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Civil Service Exam Practice Test</h1>
+<h2>Created by: CSE Learning Essentials</h2>
+<h3>Section 2: Clerical Ability<br>Part 2: Filing<br>10-Item Test<br>Passing Score: 8</h3>
+<p><strong>Direction:</strong> Arrange the following names in alphabetical order for proper filing.</p>
+
+<form id="quizForm"></form>
+
+<button class="submit-btn" onclick="event.preventDefault(); checkAnswers();">Submit Answers</button>
+
+<div class="result" id="result"></div>
+
+<footer>
+  <h4>ADVERTISEMENT</h4>
+  <p>🎓 Level up your review! Visit <a href="https://facebook.com/cselearningessentials" target="_blank">CSE Learning Essentials</a> for free resources, tips, and more mock exams.</p>
+  <h4>FOLLOW US</h4>
+  <p>
+    📘 <a href="https://facebook.com/cselearningessentials" target="_blank">Facebook</a> |
+    ▶️ <a href="https://www.youtube.com/@cselearningessentialsph2023" target="_blank">YouTube</a> |
+  </p>
+</footer>
+
+<div class="advertisement">
+  <img src="images/advertisement.png" alt="Civil Service E-book" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 15px auto; border-radius: 5px;">
+  <p>Avail our latest Civil Service Exam Reviewer E-books (E-book 1: Professional Level and E-book 2: Sub-professional Level. Direct message us for more details!</p>
+</div>
+
+<script>
+  const data = [
+    {
+      q: "1) a. Oliver Lee Dental Clinic<br>b. John Dell Computer Shop<br>c. Ellis Irving Green Water Co.<br>d. Jack Morris Farm",
+      options: ["A) c-d-b-a","B) c-a-d-b","C) b-c-a-d","D) b-a-c-d"],
+      answer: "C",
+      explain: "Order: Dell, Irving, Lee, Morris → b-c-a-d Explanation: If the business name includes the name of an individual, write it in the following format: Surname, First Name – Nature/Purpose of the business. However, it is not necessary to transform business names with the name of an individual if that person is well-known."
+    },
+    {
+      q: "2) a. Thomas Edison Power Corp.<br>b. Michael Jackson Barber Shop<br>c. Isaac Newton Electronics Co.<br>d. Martin Luther Bookstore",
+      options: ["A) b-d-c-a","B) a-b-d-c","C) d-b-c-a","D) c-d-b-a"],
+      answer: "D",
+      explain: "Order: Isaac, Martin, Michael, Thomas → c-d-b-a Explanation: If the business name includes the name of an individual, write it in the following format: Surname, First Name – Nature/Purpose of the business. However, it is not necessary to transform business names with the name of an individual if that person is well-known."
+    },
+    {
+      q: "3) a. Aries J. Johnson Wax Co.<br>b. Freddy A. Paterson Garment Co.<br>c. Robert J. Brown Bookstore<br>d. Mark A. Cruz Hardware",
+      options: ["A) c-d-a-b","B) a-b-d-c","C) a-d-b-c","D) c-b-d-a"],
+      answer: "A",
+      explain: "Order: Brown, Cruz, Johnson, Paterson → c-d-a-b Explanation: If the business name includes the name of an individual, write it in the following format: Surname, First Name – Nature/Purpose of the business. However, it is not necessary to transform business names with the name of an individual if that person is well-known."
+    },
+    {
+      q: "4) a. Heart Bakeshop<br>b. Aries Laundry Shop<br>c. Noel Souvenir Shop<br>d. Rosemary Parlor",
+      options: ["A) a-b-d-c","B) a-b-c-d","C) b-a-c-d","D) b-c-a-d"],
+      answer: "C",
+      explain: "Order: Aries, Heart, Noel, Rosemary → b-a-c-d Explanation: Organizations or business names are alphabetized as they are written, with each word serving as a unit of analysis."
+    },
+    {
+      q: "5) a. Dr. Henry Dental Clinic<br>b. Atty. Roland Notary Public<br>c. Capt. Philip Restaurant<br>d. Miss Amy Drug Store",
+      options: ["A) b-c-a-d","B) d-a-c-b","C) b-a-d-c","D) a-d-b-c"],
+      answer: "A",
+      explain: "Professional titles order: Attorney, Captain, Doctor, Miss → b-c-a-d Explanation: Titles in the name of an organization are regarded a unit (Mr. Mrs. Miss, Ms.). Abbreviated titles are handled the same as full titles (Capt. = Captain)"
+    },
+    {
+      q: "6) a. The Union Market<br>b. The Articles Gallery<br>c. Ben and Jane’s Pet Shop<br>d. Ace of Cakes & More",
+      options: ["A) d-c-a-b","B) d-c-b-a","C) d-b-c-a","D) a-b-c-d"],
+      answer: "C",
+      explain: "Ignore 'The' → Order: Ace, Articles, Ben and Janes, Union → d-b-c-a Explanation: Disregard the following articles (a, an, the)."
+    },
+    {
+      q: "7) a. Capt. Peter Fish Store<br>b. Ms. Kris Hardware<br>c. Miss Peggy Bake Shop<br>d. Captain George Restaurant",
+      options: ["A) d-a-c-b","B) d-a-b-c","C) d-b-c-a","D) a-d-c-b"],
+      answer: "A",
+      explain: "Captain George, Captain Peter, Miss Peggy, Ms. Kris → d-a-c-b Explanation: Titles in the name of an organization are regarded a unit (Mr. Mrs. Miss, Ms.). Abbreviated titles are handled the same as full titles (Capt. = Captain)"
+    },
+    {
+      q: "8) a. Jose P. Laurel High School<br>b. Claro M. Recto High School<br>c. Manuel G. Araullo High School<br>d. Cayetano Arellano High School",
+      options: ["A) d-b-a-c","B) c-d-a-b","C) d-b-c-a","D) a-d-c-b"],
+      answer: "B",
+      explain: "Order: Araullo, Arellano, Laurel, Recto → c-d-a-b"
+    },
+    {
+      q: "9) a. Bob Photo Co.<br>b. Harrison Refrigerator Mfg. Co.<br>c. Bill Gates Keyboard Mfg. Co.<br>d. Harper Telecom Co.",
+      options: ["A) c-a-d-b","B) a-c-d-b","C) c-a-b-d","D) a-d-c-b"],
+      answer: "A",
+      explain: "Order: Bill, Bob, Harper, Harrison → c-a-d-b"
+    },
+    {
+      q: "10) a. Capt. Peter Fish Store<br>b. Aries J. Johnson Wax Co.<br>c. Oliver Lee Dental Clinic<br>d. Bob Photo Co.",
+      options: ["A) b-d-a-c","B) d-a-b-c","C) d-b-c-a","D) b-d-c-a"],
+      answer: "B",
+      explain: "Order: Bob, Captain, Johnson, Lee → d-a-b-c"
+    }
+  ];
+
+  const form = document.getElementById('quizForm');
+
+  data.forEach((item, i) => {
+    const questionDiv = document.createElement('div');
+    questionDiv.classList.add('question');
+    questionDiv.innerHTML = `<p>${item.q}</p><div class="answers">${
+      item.options.map((opt, j) => `
+        <label>
+          <input type="radio" name="q${i+1}" value="${String.fromCharCode(65 + j)}"> ${opt}
+        </label><br>`).join('')
+    }</div><div class="correction" id="correction${i+1}" style="display:none;"></div>`;
+    form.appendChild(questionDiv);
+  });
+
+  function checkAnswers() {
+    let score = 0;
+    data.forEach((item, i) => {
+      const selected = document.querySelector(`input[name="q${i+1}"]:checked`);
+      const correct = item.answer;
+      const correctionDiv = document.getElementById(`correction${i+1}`);
+
+      if (selected && selected.value === correct) {
+        score++;
+        correctionDiv.innerHTML = `✅ Correct! ${item.explain}`;
+      } else {
+        correctionDiv.innerHTML = `❌ Incorrect. Correct answer is <strong>${correct}</strong>. ${item.explain}`;
+      }
+      correctionDiv.style.display = 'block';
+    });
+
+    const result = document.getElementById('result');
+    result.textContent = `You got ${score}/10 correct. ${score >= 8 ? "✅ PASSING" : "❌ FAILED"}`;
+  }
+</script>
+
+</body>
+</html>
